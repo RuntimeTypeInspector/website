@@ -1,3 +1,5 @@
+import {addTypeChecks} from "../RuntimeTypeInspector.js/src-transpiler/index.mjs";
+import * as rtiTranspiler from "../RuntimeTypeInspector.js/src-transpiler/index.mjs";
 /**
  * @param {string} id - ID of editor.
  * @param {string} txt - Initial text of editor.
@@ -30,6 +32,29 @@ function setupAce(id, txt, execShiftEnter, execAltEnter) {
   });
   return aceEditor;
 }
-
-setupAce("hero-repl-in", "hello", console.log, console.log);
-setupAce("hero-repl-out", "hello out", console.log, console.log);
+const example = `/**
+ * @param {number} a
+ * @param {number} b
+ */
+function add(a, b) {
+  return a + b;
+}
+/** @type {number[]} */
+const arr = [10_20];
+const [a, b] = arr;
+const ret = add(a, b);
+console.log("ret", ret);
+`;
+const aceEditorLeft   = setupAce("hero-repl-in", example, console.log, console.log);
+const aceEditorRight = setupAce("hero-repl-out", "hello out", console.log, console.log);
+function onChange() {
+    const val = aceEditorLeft.getValue();
+    const valRight = addTypeChecks(val);
+    aceEditorRight.setValue(valRight);
+    aceEditorRight.clearSelection(); // setValue selects everything
+}
+onChange(); // initial update
+aceEditorLeft.on('change', onChange);
+Object.assign(window, {
+    addTypeChecks, aceEditorLeft, aceEditorRight, rtiTranspiler, ...rtiTranspiler
+});

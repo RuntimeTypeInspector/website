@@ -3,12 +3,14 @@
 <head>
   <title>RuntimeTypeInspector.js</title>
   <link href="style.css" rel="stylesheet">
+  <script src="importmap.js"></script>
   <script src="./node_modules/ace-builds/src/ace.js"></script>
+  <script src="./node_modules/typescript/lib/typescript.js"></script>
 </head>
 
 <body>
   <header>
-    <h1>RuntimeTypeInspector.js</h1>
+    <h1 style="margin: 0;">RuntimeTypeInspector.js</h1>
     <h2 style="font-size: 1.3em; color: white">Converting your JSDoc to runtime type assertions!</h2>
     <!-- live editor -->
     <div class="hero-repl hero-repl--visible">
@@ -32,7 +34,7 @@
       </div>
     </div>
 
-  <script src="index.js"></script>
+  <script type="module" src="index.js"></script>
   </header>
   <main>
     <aside>
