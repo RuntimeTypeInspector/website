@@ -19,6 +19,7 @@
   "dependencies": {
     "@babel/parser": "^7.23.0",
     "ace-builds": "^1.29.0",
+    "runtime-type-inspector": "^2.0.0",
     "typescript": "^5.2.2"
   }
 }
