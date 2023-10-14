@@ -206,6 +206,10 @@ h3 {
 https://github.com/LeaVerou/lea.verou.me/blob/main/assets/style.postcss (MIT)
 */
 
+main a {
+	color:black;
+}
+
 :root {
 	--font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	--font-serif: Vollkorn, "Hoefler Text", Garamond, "Times New Roman", serif;
@@ -216,7 +220,7 @@ https://github.com/LeaVerou/lea.verou.me/blob/main/assets/style.postcss (MIT)
 	--color-blue: var(--color-turquoise);
 	--color-green: hsl(80 61% 48%);
 
-	--color-accent: hsl(73, 100%, 50%);
+	--color-accent: hsl(56, 95%, 47%);
 	--color-accent2: var(--color-orange);
 	--color-accent3: var(--color-turquoise);
 	--color-accent4: var(--color-green);
@@ -237,7 +241,7 @@ https://github.com/LeaVerou/lea.verou.me/blob/main/assets/style.postcss (MIT)
 	--color-accent-light2: color-mix(in lab, white, var(--color-accent) 10%);
 	--color-accent-light3: color-mix(in lab, white, var(--color-accent) 5%);
 	--color-accent2-light1: hsl(35 100% 90%);
-	--color-accent2-light2: hsl(35 100% 95%);
+	--color-accent2-light2: hsla(56, 100%, 50%, 0.774);
 	--color-accent2-light3: hsl(35 100% 99%);
 
 	--width-med: 50rem;
