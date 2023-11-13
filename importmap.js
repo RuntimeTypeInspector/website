@@ -4,7 +4,7 @@ function importFile(content) {
 const imports = {
   //"@babel/core": "./babel-core.mjs",
   "@babel/parser": "./babel-parser.mjs",
-  "runtime-type-inspector/": "./node_modules/runtime-type-inspector/",
+  "@runtime-type-inspector/transpiler": "./node_modules/@runtime-type-inspector/transpiler/index.mjs",
   //"@babel/helper-plugin-utils": "./babel-helper-plugin-utils.mjs",
   //"@babel/plugin-syntax-typescript": "./babel-plugin-syntax-typescript.mjs",
   "fs": importFile("export default {};"),

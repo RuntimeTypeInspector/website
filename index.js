@@ -1,5 +1,5 @@
-import {addTypeChecks} from "runtime-type-inspector/src-transpiler/index.mjs";
-import * as rtiTranspiler from "runtime-type-inspector/src-transpiler/index.mjs";
+import {addTypeChecks} from "@runtime-type-inspector/transpiler";
+import * as rtiTranspiler from "@runtime-type-inspector/transpiler";
 /**
  * @param {string} id - ID of editor.
  * @param {string} txt - Initial text of editor.
