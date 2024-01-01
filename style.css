@@ -208,6 +208,8 @@ https://github.com/LeaVerou/lea.verou.me/blob/main/assets/style.postcss (MIT)
 
 main a {
 	color:black;
+	text-decoration: underline;
+    text-underline-offset: 0.2rem;
 }
 
 :root {

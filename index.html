@@ -42,7 +42,7 @@
       <h4>RuntimeTypeInspector.js</h4>
       <ul>
         <li><a href="https://github.com/kungfooman/RuntimeTypeInspector.js">GitHub</a></li>
-        <li><a href="https://www.npmjs.com/package/runtime-type-inspector">NPM</a></li>
+        <li><a href="https://www.npmjs.com/search?q=%40runtime-type-inspector">NPM</a></li>
         <li><a href="https://pc.runtimetypeinspector.org/#/animation/blend-trees-2d-cartesian">PlayCanvas Examples + RTI</a></li>
         <li><a href="https://repl.runtimetypeinspector.org/">Developer REPL</a></li>
       </ul>
@@ -87,16 +87,63 @@
       <p dir="auto"><strong>Another demonstration fixing <code>NaN</code> bugs in the PlayCanvas Volumetric Video project:</strong></p>
       <p dir="auto"><a href="https://www.youtube.com/watch?v=xOp3YWU6M1g" rel="nofollow">https://www.youtube.com/watch?v=xOp3YWU6M1g</a></p>
       <p dir="auto"><a href="https://www.youtube.com/watch?v=xOp3YWU6M1g" rel="nofollow"><img src="vid_b.jpg" alt="volumetric video bug fixing" data-canonical-src="https://img.youtube.com/vi/xOp3YWU6M1g/0.jpg" style="max-width: 100%;"></a></p>
-      <h1 tabindex="-1" id="user-content-installation" dir="auto"><a class="heading-link" href="#installation">Installation<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h1>
-      <div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>npm install runtime-type-inspector
-      </code></pre>
-      
+
+
+
+      <h1 tabindex="-1" id="user-content-installation" dir="auto"><a class="heading-link"
+          href="#installation">Installation<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16"
+            height="16" aria-hidden="true">
+            <path
+              d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">
+            </path>
+          </svg></a></h1>
+      <div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+            <p>Please take my two Pull Requests for <a href="https://github.com/xenova/transformers.js/pull/409">Transformers.js</a> (using Webpack) and <a href="https://github.com/playcanvas/engine/pull/5817">PlayCanvas</a> (using Rollup) as example.</p>
+            
+            <pre class="notranslate"><code>npm install @runtime-type-inspector/transpiler
+            </code></pre>
+            
+            <p>Live demo: <a href="https://runtimetypeinspector.org/">https://runtimetypeinspector.org/</a></p>
+            
+            <p>Thank you for reading and testing! You can also open DevTools and run:</p>
+            
+            <pre><code>console.log(rtiTranspiler)
+            </code></pre>
+
+            <h1>Available NPM packages</h1>
+
+            <ul>
+                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/runtime">@runtime-type-inspector/runtime</a></li>
+                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/transpiler">@runtime-type-inspector/transpiler</a></li>
+                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-parcel1">@runtime-type-inspector/plugin-parcel1</a></li>
+                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/parcel-transformer">@runtime-type-inspector/parcel-transformer (Parcel v2)</a></li>
+                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-rollup">@runtime-type-inspector/plugin-rollup</a></li>
+                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack">@runtime-type-inspector/plugin-webpack (version independent)</a></li>
+                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack4">@runtime-type-inspector/plugin-webpack4</a></li>
+                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack5">@runtime-type-inspector/plugin-webpack5</a></li>
+            </ul>
+
+            <h1>Acknowledgements</h1>
+
+<p>We are incredibly grateful for the support and contribution of our funders, <a href="https://www.sovereigntechfund.de/">Sovereign Tech Fund</a>. We would like to thank them for their support and contribution towards making this project possible. Their partnership and generous funding have been instrumental in the success and realization of <a href="https://github.com/kungfooman/RuntimeTypeInspector.js">RuntimeTypeInspector.js</a>.</p>
+
+<blockquote>
+<p>Open source, a treasure trove for all to embrace,</p>
+<p>But its potential is limited, without financial grace.</p>
+<p>Let's urge our governments, to invest in its light,</p>
+<p>For a resilient digital infrastructure, shining bright.</p>
+</blockquote>
+
       </article>
 
   </main>
   <footer>
     <ul>
       <li><a href="https://github.com/RuntimeTypeInspector/website">Website repo</a></li>
+      <li><a href="https://github.com/kungfooman/RuntimeTypeInspector.js">GitHub</a></li>
+      <li><a href="https://www.npmjs.com/search?q=%40runtime-type-inspector">NPM</a></li>
+      <li><a href="https://pc.runtimetypeinspector.org/#/animation/blend-trees-2d-cartesian">PlayCanvas Examples + RTI</a></li>
+      <li><a href="https://repl.runtimetypeinspector.org/">Developer REPL</a></li>
     </ul>
   </footer>
 </body>
