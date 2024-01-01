@@ -18,7 +18,8 @@
   "homepage": "https://github.com/RuntimeTypeInspector/website#readme",
   "dependencies": {
     "@babel/parser": "^7.23.0",
-    "@runtime-type-inspector/transpiler": "^2.0.15",
+    "@runtime-type-inspector/repl": "^1.0.0",
+    "@runtime-type-inspector/transpiler": "^3.0.3",
     "ace-builds": "^1.29.0",
     "typescript": "^5.2.2"
   }
