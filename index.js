@@ -45,8 +45,8 @@ const [a, b] = arr;
 const ret = add(a, b);
 console.log("ret", ret);
 `;
-const aceEditorLeft   = setupAce("hero-repl-in", example, console.log, console.log);
-const aceEditorRight = setupAce("hero-repl-out", "hello out", console.log, console.log);
+const aceEditorLeft   = setupAce("playground-in", example, console.log, console.log);
+const aceEditorRight = setupAce("playground-out", "hello out", console.log, console.log);
 function onChange() {
     const val = aceEditorLeft.getValue();
     const valRight = addTypeChecks(val);
@@ -58,3 +58,33 @@ aceEditorLeft.on('change', onChange);
 Object.assign(window, {
     addTypeChecks, aceEditorLeft, aceEditorRight, rtiTranspiler, ...rtiTranspiler
 });
+
+// <x-code>: single-tag code area. Register it (styling works regardless,
+// but defining it is proper) and inject a copy button into each instance
+// so the HTML needs no extra markup at all.
+customElements.define("x-code", class extends HTMLElement {});
+
+// Copy buttons: injected into every <x-code> so the HTML stays clean.
+// Click copies the block, button briefly confirms with "copied ✓".
+for (const el of document.querySelectorAll("x-code")) {
+    const text = el.textContent.trim();
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "copy-btn";
+    btn.textContent = "copy";
+    btn.setAttribute("aria-label", "Copy code to clipboard");
+    btn.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch {
+            return; // clipboard unavailable — stay quiet, text is still selectable
+        }
+        btn.textContent = "copied ✓";
+        btn.classList.add("copied");
+        setTimeout(() => {
+            btn.textContent = "copy";
+            btn.classList.remove("copied");
+        }, 1200);
+    });
+    el.append(btn);
+}

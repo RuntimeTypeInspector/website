@@ -1,8 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <title>RuntimeTypeInspector.js</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RuntimeTypeInspector.js - Converting your JSDoc to runtime type assertions!">
   <link href="style.css" rel="stylesheet">
   <script src="importmap.js"></script>
   <script src="./node_modules/ace-builds/src/ace.js"></script>
@@ -14,23 +17,15 @@
     <h1 style="margin: 0;">RuntimeTypeInspector.js</h1>
     <h2 style="font-size: 1.3em; color: white">Converting your JSDoc to runtime type assertions!</h2>
     <!-- live editor -->
-    <div class="hero-repl hero-repl--visible">
-      <div class="hero-repl__editor">
-        <div class="hero-repl__pane hero-repl__pane--left">
+    <div class="playground playground-visible">
+      <div class="playground-layout">
+        <div class="playground-pane playground-pane-input">
           <h3>Put in typed JavaScript</h3>
-          <div id="hero-repl-in" class="hero-repl__code ace_editor ace-tomorrow-night ace_dark" style="font-size: 1rem;">
-          </div>
+          <div id="playground-in" class="playground-code ace_editor ace-tomorrow-night ace_dark" style="font-size: 1rem;"></div>
         </div>
-        <div class="hero-repl__pane hero-repl__pane--right">
+        <div class="playground-pane playground-pane-output">
           <h3>Get type-asserting JavaScript out</h3>
-          <div id="hero-repl-out" class="hero-repl__code ace_editor ace-tomorrow-night ace_dark" style="font-size: 1rem;">
-          </div>
-          <!--
-          <div class="hero-repl__error hero-repl__error--visible">/repl: Missing semicolon. (1:3)
-
-            &gt; 1 | asd asd 
-                |    ^</div>
-          -->
+          <div id="playground-out" class="playground-code ace_editor ace-tomorrow-night ace_dark" style="font-size: 1rem;"></div>
         </div>
       </div>
     </div>
@@ -47,94 +42,94 @@
         <li><a href="https://repl.runtimetypeinspector.org/">Developer REPL</a></li>
       </ul>
     </aside>
-    
+
     <hr>
 
     <p>First demonstration of RuntimeTypeInspector.js in combination with the PlayCanvas Examples viewer:</p>
     <p><a href="https://pc.runtimetypeinspector.org/#/animation/blend-trees-2d-cartesian">https://pc.runtimetypeinspector.org/#/animation/blend-trees-2d-cartesian</a></p>
     <p>If you enter code in Monaco or F12/DevTools like this:</p>
-    <pre><code>
-        new pc.Vec3("this", "should", "warn");
-    </code></pre>
+    <x-code>new pc.Vec3("this", "should", "warn");</x-code>
     <p>It warns like:</p>
-    <p><img src="https://github.com/playcanvas/engine/assets/5236548/f5c504b4-34ef-41e7-8a28-0c15ad969214" alt="image"/></p>
+    <p><img src="https://github.com/playcanvas/engine/assets/5236548/f5c504b4-34ef-41e7-8a28-0c15ad969214" alt="Runtime type warning shown in the PlayCanvas examples viewer"/></p>
     <p>And in console:</p>
-    <p><img src="https://github.com/playcanvas/engine/assets/5236548/0246d25b-8e01-4a8c-8d4e-5ae8286139d9" alt="image"/></p>
-    <p>The signal/noise ratio is still quite high to find "real" issues in the engine, but I hope we can get there with some PR's improving some type definitions here and there. Ideal case would be running every example with only a few errors here and there, but not in the thousands.</p>
+    <p><img src="https://github.com/playcanvas/engine/assets/5236548/0246d25b-8e01-4a8c-8d4e-5ae8286139d9" alt="Runtime type warning printed in the browser console"/></p>
+    <p>The signal/noise ratio is still quite high to find "real" issues in the engine, but I hope we can get there
+    with some PR's improving some type definitions here and there. Ideal case would be running every example with only
+    a few errors here and there, but not in the thousands.</p>
 
     <hr>
 
-    <article class="markdown-body entry-content container-lg" itemprop="text"><h1 tabindex="-1" id="user-content-runtimetypeinspectorjs---your-personal-type-checking-assistant-️" dir="auto"><a class="heading-link" href="#runtimetypeinspectorjs---your-personal-type-checking-assistant-️"><code>RuntimeTypeInspector.js</code> - your personal type-checking assistant 🕵️🐞🐛<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h1>
+    <article>
+      <h2 id="runtimetypeinspector"><a href="#runtimetypeinspector"><code>RuntimeTypeInspector.js</code></a></h2>
+      <p class="subtitle">your personal type-checking assistant 🕵️🐞🐛</p>
 
-
-      <p dir="auto"><code>RuntimeTypeInspector.js</code> alongside <code>JSDoc</code> is a powerful tool which works in tandem with <code>Babel.js</code> and <code>TypeScript</code> to generate type-asserting JavaScript files. Assertion code is injected into debug builds to perform runtime type checking of each function and method at runtime - a step which is required beyond pure static typing to help emerge the Incident Management Lifecycle.</p>
-      <p dir="auto">The Incident Management Lifecycle is:</p>
-      <ul dir="auto">
-      <li>Identify - recognize the type incidents</li>
-      <li>Respond - debugging in F12/DevTools</li>
-      <li>Resolve - once the issue is cognized it's resolvable</li>
-      <li>Learn - clarify the issue for yourself and share with others</li>
+      <p><code>RuntimeTypeInspector.js</code> alongside <code>JSDoc</code> is a powerful tool which works in
+      tandem with <code>Babel.js</code> and <code>TypeScript</code> to generate type-asserting JavaScript files.
+      Assertion code is injected into debug builds to perform runtime type checking of each function and method at
+      runtime - a step which is required beyond pure static typing to help emerge the Incident Management
+      Lifecycle.</p>
+      <p>The Incident Management Lifecycle is:</p>
+      <ul>
+        <li>Identify - recognize the type incidents</li>
+        <li>Respond - debugging in F12/DevTools</li>
+        <li>Resolve - once the issue is cognized it's resolvable</li>
+        <li>Learn - clarify the issue for yourself and share with others</li>
       </ul>
-      <p dir="auto"><code>RuntimeTypeInspector.js</code> is supporting Identify and Respond of the IML.</p>
-      <h1 tabindex="-1" id="user-content-why-is-this-technology-critical" dir="auto"><a class="heading-link" href="#why-is-this-technology-critical">Why is this technology critical?<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h1>
-      <p dir="auto">This technology is critical because it provides developers with an organized method to ensure type safety with runtime type issue reports while improving code organization, type safety and documentation - making it easier for other developers to understand the code and enforce good coding standards.</p>
-      <p dir="auto">RuntimeTypeInspector.js assists the debugging process, since it has a clear definition of what each function expects while issuing warnings, which can act as breakpoints in your source code (as shown in the example debugging session in my showcase video). Finally, good JSDoc can make the entire code base more maintainable, since it's easier for developers to find the specific parts of the code they need to change quickly and easily.</p>
-      <h1 tabindex="-1" id="user-content-watch-our-example-usage-videos" dir="auto"><a class="heading-link" href="#watch-our-example-usage-videos">Watch our Example Usage Videos!<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></h1>
-      <p dir="auto">If you want to see how our product works, take a look at the videos we have prepared. They show you exactly how to use our product with ease.</p>
-      <p dir="auto"><strong>Presentation hunting down a <code>NaN</code> bug in the PlayCanvas engine:</strong></p>
-      <p dir="auto"><a href="https://www.youtube.com/watch?v=o5ipQe2rVKQ" rel="nofollow">https://www.youtube.com/watch?v=o5ipQe2rVKQ</a></p>
-      <p dir="auto"><a href="https://www.youtube.com/watch?v=o5ipQe2rVKQ" rel="nofollow"><img src="vid_a.jpg" alt="hunting down NaN bug in PlayCanvas" data-canonical-src="https://img.youtube.com/vi/o5ipQe2rVKQ/0.jpg" style="max-width: 100%;"></a></p>
-      <p dir="auto"><strong>Another demonstration fixing <code>NaN</code> bugs in the PlayCanvas Volumetric Video project:</strong></p>
-      <p dir="auto"><a href="https://www.youtube.com/watch?v=xOp3YWU6M1g" rel="nofollow">https://www.youtube.com/watch?v=xOp3YWU6M1g</a></p>
-      <p dir="auto"><a href="https://www.youtube.com/watch?v=xOp3YWU6M1g" rel="nofollow"><img src="vid_b.jpg" alt="volumetric video bug fixing" data-canonical-src="https://img.youtube.com/vi/xOp3YWU6M1g/0.jpg" style="max-width: 100%;"></a></p>
+      <p><code>RuntimeTypeInspector.js</code> is supporting Identify and Respond of the IML.</p>
+      <h2 id="why-is-this-technology-critical"><a href="#why-is-this-technology-critical">Why is this technology critical?</a></h2>
+      <p>This technology is critical because it provides developers with an organized method to ensure type
+      safety with runtime type issue reports while improving code organization, type safety and documentation - making
+      it easier for other developers to understand the code and enforce good coding standards.</p>
+      <p>RuntimeTypeInspector.js assists the debugging process, since it has a clear definition of what each
+      function expects while issuing warnings, which can act as breakpoints in your source code (as shown in the
+      example debugging session in my showcase video). Finally, good JSDoc can make the entire code base more
+      maintainable, since it's easier for developers to find the specific parts of the code they need to change quickly
+      and easily.</p>
+      <h2 id="watch-our-example-usage-videos"><a href="#watch-our-example-usage-videos">Watch our Example Usage Videos!</a></h2>
+      <p>If you want to see how our product works, take a look at the videos we have prepared. They show you
+      exactly how to use our product with ease.</p>
+      <p><strong>Presentation hunting down a <code>NaN</code> bug in the PlayCanvas engine:</strong></p>
+      <p><a href="https://www.youtube.com/watch?v=o5ipQe2rVKQ">https://www.youtube.com/watch?v=o5ipQe2rVKQ</a></p>
+      <p><a href="https://www.youtube.com/watch?v=o5ipQe2rVKQ"><img src="https://img.youtube.com/vi/o5ipQe2rVKQ/hqdefault.jpg" alt="hunting down NaN bug in PlayCanvas"></a></p>
+      <p><strong>Another demonstration fixing <code>NaN</code> bugs in the PlayCanvas Volumetric Video project:</strong></p>
+      <p><a href="https://www.youtube.com/watch?v=xOp3YWU6M1g">https://www.youtube.com/watch?v=xOp3YWU6M1g</a></p>
+      <p><a href="https://www.youtube.com/watch?v=xOp3YWU6M1g"><img src="https://img.youtube.com/vi/xOp3YWU6M1g/hqdefault.jpg" alt="volumetric video bug fixing"></a></p>
 
+      <h2 id="installation"><a href="#installation">Installation</a></h2>
+      <p>Please take my two Pull Requests for <a href="https://github.com/xenova/transformers.js/pull/409">Transformers.js</a> (using Webpack) and <a href="https://github.com/playcanvas/engine/pull/5817">PlayCanvas</a> (using Rollup) as example.</p>
 
+      <x-code>npm install @runtime-type-inspector/transpiler</x-code>
 
-      <h1 tabindex="-1" id="user-content-installation" dir="auto"><a class="heading-link"
-          href="#installation">Installation<svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16"
-            height="16" aria-hidden="true">
-            <path
-              d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">
-            </path>
-          </svg></a></h1>
-      <div class="snippet-clipboard-content notranslate position-relative overflow-auto">
-            <p>Please take my two Pull Requests for <a href="https://github.com/xenova/transformers.js/pull/409">Transformers.js</a> (using Webpack) and <a href="https://github.com/playcanvas/engine/pull/5817">PlayCanvas</a> (using Rollup) as example.</p>
-            
-            <pre class="notranslate"><code>npm install @runtime-type-inspector/transpiler
-            </code></pre>
-            
-            <p>Live demo: <a href="https://runtimetypeinspector.org/">https://runtimetypeinspector.org/</a></p>
-            
-            <p>Thank you for reading and testing! You can also open DevTools and run:</p>
-            
-            <pre><code>console.log(rtiTranspiler)
-            </code></pre>
+      <p>Live demo: <a href="https://runtimetypeinspector.org/">https://runtimetypeinspector.org/</a></p>
 
-            <h1>Available NPM packages</h1>
+      <p>Thank you for reading and testing! You can also open DevTools and run:</p>
 
-            <ul>
-                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/runtime">@runtime-type-inspector/runtime</a></li>
-                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/transpiler">@runtime-type-inspector/transpiler</a></li>
-                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-parcel1">@runtime-type-inspector/plugin-parcel1</a></li>
-                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/parcel-transformer">@runtime-type-inspector/parcel-transformer (Parcel v2)</a></li>
-                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-rollup">@runtime-type-inspector/plugin-rollup</a></li>
-                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack">@runtime-type-inspector/plugin-webpack (version independent)</a></li>
-                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack4">@runtime-type-inspector/plugin-webpack4</a></li>
-                <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack5">@runtime-type-inspector/plugin-webpack5</a></li>
-            </ul>
+      <x-code>console.log(rtiTranspiler)</x-code>
 
-            <h1>Acknowledgements</h1>
+      <h2 id="available-npm-packages"><a href="#available-npm-packages">Available NPM packages</a></h2>
 
-<p>We are incredibly grateful for the support and contribution of our funders, <a href="https://www.sovereigntechfund.de/">Sovereign Tech Fund</a>. We would like to thank them for their support and contribution towards making this project possible. Their partnership and generous funding have been instrumental in the success and realization of <a href="https://github.com/kungfooman/RuntimeTypeInspector.js">RuntimeTypeInspector.js</a>.</p>
+      <ul>
+        <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/runtime">@runtime-type-inspector/runtime</a></li>
+        <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/transpiler">@runtime-type-inspector/transpiler</a></li>
+        <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-parcel1">@runtime-type-inspector/plugin-parcel1</a></li>
+        <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/parcel-transformer">@runtime-type-inspector/parcel-transformer (Parcel v2)</a></li>
+        <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-rollup">@runtime-type-inspector/plugin-rollup</a></li>
+        <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack">@runtime-type-inspector/plugin-webpack (version independent)</a></li>
+        <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack4">@runtime-type-inspector/plugin-webpack4</a></li>
+        <li><a href="https://www.npmjs.com/package/@runtime-type-inspector/plugin-webpack5">@runtime-type-inspector/plugin-webpack5</a></li>
+      </ul>
 
-<blockquote>
-<p>Open source, a treasure trove for all to embrace,</p>
-<p>But its potential is limited, without financial grace.</p>
-<p>Let's urge our governments, to invest in its light,</p>
-<p>For a resilient digital infrastructure, shining bright.</p>
-</blockquote>
+      <h2 id="acknowledgements"><a href="#acknowledgements">Acknowledgements</a></h2>
+      <p>We are incredibly grateful for the support and contribution of our funders, <a href="https://www.sovereigntechfund.de/">Sovereign Tech Fund</a>. We would like to thank them for their support and contribution towards making this project possible. Their partnership and generous funding have been instrumental in the success and realization of <a href="https://github.com/kungfooman/RuntimeTypeInspector.js">RuntimeTypeInspector.js</a>.</p>
 
-      </article>
+      <blockquote>
+        <p>Open source, a treasure trove for all to embrace,</p>
+        <p>But its potential is limited, without financial grace.</p>
+        <p>Let's urge our governments, to invest in its light,</p>
+        <p>For a resilient digital infrastructure, shining bright.</p>
+      </blockquote>
+
+    </article>
 
   </main>
   <footer>
